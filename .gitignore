@@ -1,0 +1,45 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Model files
+*.ckpt
+*.safetensors
+Aurel_diffusers/
+
+# Generated outputs
+api/output/*.png
+api/output/*.jpg
+
+# Data directories
+data/users/
+data/models/
+data/temp/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Testing
+api/test_output/

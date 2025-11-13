@@ -1,0 +1,126 @@
+{
+  "info": {
+    "name": "Stable Diffusion API",
+    "description": "Collection pour tester l'API Stable Diffusion",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["health"]
+        },
+        "description": "Vérifier l'état de l'API"
+      }
+    },
+    {
+      "name": "Root",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": [""]
+        },
+        "description": "Endpoint racine avec la liste des endpoints disponibles"
+      }
+    },
+    {
+      "name": "Generate Image (Base64)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"photo of sks person as a futuristic astronaut in space\",\n  \"user_id\": \"user_123\",\n  \"num_inference_steps\": 30,\n  \"guidance_scale\": 7.5,\n  \"width\": 512,\n  \"height\": 512,\n  \"seed\": 42\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/generate",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["generate"]
+        },
+        "description": "Génère une image et retourne le résultat en base64 dans un JSON"
+      }
+    },
+    {
+      "name": "Generate Image (Binary)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"photo of sks person in professional business attire, studio lighting\",\n  \"user_id\": \"default\",\n  \"num_inference_steps\": 30,\n  \"guidance_scale\": 7.5,\n  \"width\": 512,\n  \"height\": 512\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/generate/image",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["generate", "image"]
+        },
+        "description": "Génère une image et retourne le PNG directement"
+      }
+    },
+    {
+      "name": "Generate - Quick Test",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"prompt\": \"photo of sks person smiling\",\n  \"user_id\": \"default\",\n  \"num_inference_steps\": 20,\n  \"guidance_scale\": 7.5\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8000/generate",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["generate"]
+        },
+        "description": "Test rapide avec moins d'étapes pour accélérer la génération"
+      }
+    },
+    {
+      "name": "Clear Cache",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8000/cache",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["cache"]
+        },
+        "description": "Vider le cache des modèles pour libérer la mémoire"
+      }
+    }
+  ]
+}
